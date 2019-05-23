@@ -1,111 +1,42 @@
 import time
 from playsound import playsound
 
-def userxposition(userxpos):
+wins = 0
+
+def userxposition(userxpos, userxlist, userslist, userx):
     userxpos = int(userxpos)
-    if userxpos == 1:
-        nowboard = '''
-             |     |     
-          x  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 2:
-        nowboard = '''
-             |     |     
-          1  |  x  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 3:
-        nowboard = '''
-             |     |     
-          1  |  2  |  x  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 4:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          x  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 5:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  x  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 6:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  x  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 7:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          x  |  8  |  9  
-             |     |     '''
-    if userxpos == 8:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    if userxpos == 9:
-        nowboard = '''
-             |     |     
-          1  |  2  |  3  
-        _____|_____|_____
-             |     |     
-          4  |  5  |  6  
-        _____|_____|_____
-             |     |     
-          7  |  8  |  9  
-             |     |     '''
-    return nowboard
+    if userxpos not in userxlist:
+        if userxpos not in userslist:
+            userxlist.append(userxpos)
+            userslist.append(userxpos)
+    if 1 and 2 and 3 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 4 and 5 and 6 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 7 and 8 and 9 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 1 and 4 and 7 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 2 and 5 and 8 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 3 and 6 and 9 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 1 and 5 and 9 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
+    if 3 and 5 and 7 in userxlist:
+        print("%s won! Congratulations!" % (userx))
+        wins = 1
 
+    return userxlist
 
-print('Hello! Welcome to TrustedTicTacToe!')
+"""print('Hello! Welcome to TrustedTicTacToe!')
 time.sleep(1)
 print('If you don\'t know how to play TicTacToe, please visit this page - https://www.wikihow.com/Play-Tic-Tac-Toe')
 
@@ -113,7 +44,7 @@ readyornot = input('If you\'re ready, please click enter, if you are not, don\'t
 print('Starting in...')
 #playsound('E:\TrustedMercury\PYTHON\ProjectNeeds\Start.mp3')
 time.sleep(0.5)
-print('Loading TrustedTicTacToe Multiplayer...')
+print('Loading TrustedTicTacToe Multiplayer...')"""
 userx = input('Please enter player1\'s name\n')
 time.sleep(0.25)
 print('Welcome %s!' % userx.capitalize())
@@ -122,7 +53,7 @@ print('''
 usero = input('Please enter player2\'s name\n')
 time.sleep(0.25)
 print('Welcome %s!' % usero.capitalize())
-time.sleep(1)
+"""time.sleep(1)
 print("This is what the gameboard looks like, you'll need to use the numbers to choose your positions.")
 time.sleep(2)
 print('''
@@ -134,14 +65,16 @@ _____|_____|_____
 _____|_____|_____
      |     |     
   7  |  8  |  9  
-     |     |     ''')
-userxpos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % userx.capitalize())
-nowboard = userxposition(userxpos)
-time.sleep(1)
-print(nowboard)
+     |     |     ''')"""
+userxlist = []
+userolist = []
+userslist = []
+condition = True
 
-
-
-
-
-
+while wins != 1:
+    userxpos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % userx.capitalize())
+    userxlist = userxposition(userxpos, userxlist, userslist, userx)
+    print('%s\'s values = %s' % (userx.capitalize(), userxlist))
+    useropos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % usero.capitalize())
+    userolist = userxposition(useropos, userolist, userslist, usero)
+    print('%s\'s values = %s' % (usero.capitalize(), userolist))
