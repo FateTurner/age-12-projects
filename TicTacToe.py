@@ -3,38 +3,85 @@ from playsound import playsound
 
 wins = 0
 
+def displayo(finalizednumber):
+    if finalizednumber == 1:
+        table1[0] = "O"
+    if finalizednumber == 2:
+        table2[0] = "O"
+    if finalizednumber == 3:
+        table3[0] = "O"
+    if finalizednumber == 4:
+        table4[0] = "O"
+    if finalizednumber == 5:
+        table5[0] = "O"
+    if finalizednumber == 6:
+        table6[0] = "O"
+    if finalizednumber == 7:
+        table7[0] = "O"
+    if finalizednumber == 8:
+        table8[0] = "O"
+    if finalizednumber == 9:
+        table9[0] = "O"
+    print ([table1], "|", [table2], "|", [table3])
+    print ([table4], "|", [table5], "|", [table6])
+    print ([table7], "|", [table8], "|", [table9])
+
+def displayx(finalizednumber):
+    if finalizednumber == 1:
+        table1[0] = "X"
+    if finalizednumber == 2:
+        table2[0] = "X"
+    if finalizednumber == 3:
+        table3[0] = "X"
+    if finalizednumber == 4:
+        table4[0] = "X"
+    if finalizednumber == 5:
+        table5[0] = "X"
+    if finalizednumber == 6:
+        table6[0] = "X"
+    if finalizednumber == 7:
+        table7[0] = "X"
+    if finalizednumber == 8:
+        table8[0] = "X"
+    if finalizednumber == 9:
+        table9[0] = "X"
+    print ([table1], "|", [table2], "|", [table3])
+    print ([table4], "|", [table5], "|", [table6])
+    print ([table7], "|", [table8], "|", [table9])
+
+
 def userxposition(userxpos, userxlist, userslist, userx):
+    end = 0
     userxpos = int(userxpos)
     if userxpos not in userxlist:
         if userxpos not in userslist:
             userxlist.append(userxpos)
             userslist.append(userxpos)
-    if 1 and 2 and 3 in userxlist:
+    if 1 in userxlist and 2 in userxlist and 3 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 4 and 5 and 6 in userxlist:
+        end = 1
+    if 4 in userxlist and 5 in userxlist and 6 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 7 and 8 and 9 in userxlist:
+        end = 1
+    if 7 in userxlist and 8 in userxlist and 9 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 1 and 4 and 7 in userxlist:
+        end = 1
+    if 1 in userxlist and 4 in userxlist and 7 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 2 and 5 and 8 in userxlist:
+        end = 1
+    if 2 in userxlist and 5 in userxlist and 8 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 3 and 6 and 9 in userxlist:
+        end = 1
+    if 3 in userxlist and 6 in userxlist and 9 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 1 and 5 and 9 in userxlist:
+        end = 1
+    if 1 in userxlist and 5 in userxlist and 9 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-    if 3 and 5 and 7 in userxlist:
+        end = 1
+    if 3 in userxlist and 5 in userxlist and 7 in userxlist:
         print("%s won! Congratulations!" % (userx))
-        wins = 1
-
-    return userxlist
+        end = 1
+    return (userxlist, end)
 
 """print('Hello! Welcome to TrustedTicTacToe!')
 time.sleep(1)
@@ -66,15 +113,37 @@ _____|_____|_____
      |     |     
   7  |  8  |  9  
      |     |     ''')"""
+
 userxlist = []
 userolist = []
 userslist = []
-condition = True
+
+table1 = ["1"]
+table2 = ["2"]
+table3 = ["3"]
+table4 = ["4"]
+table5 = ["5"]
+table6 = ["6"]
+table7 = ["7"]
+table8 = ["8"]
+table9 = ["9"]
+
 
 while wins != 1:
-    userxpos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % userx.capitalize())
-    userxlist = userxposition(userxpos, userxlist, userslist, userx)
-    print('%s\'s values = %s' % (userx.capitalize(), userxlist))
-    useropos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % usero.capitalize())
-    userolist = userxposition(useropos, userolist, userslist, usero)
-    print('%s\'s values = %s' % (usero.capitalize(), userolist))
+    if wins != 1:
+        userxpos = input('%s it\'s your chance! Your value is \'x\'! Choose a number: ' % userx.capitalize())
+        userxlist, end = userxposition(userxpos, userxlist, userslist, userx)
+        finalizedxpos = userxlist[len(userxlist)-1]
+        displayx(finalizedxpos)
+        wins = end
+        print(wins)
+        print('%s\'s values = %s' % (userx.capitalize(), userxlist))
+        print(userslist)
+    if wins != 1:
+        useropos = input('%s it\'s your chance! Your value is \'o\'! Choose a number: ' % usero.capitalize())
+        userolist, end = userxposition(useropos, userolist, userslist, usero)
+        finalizedopos = userolist[len(userolist) - 1]
+        displayo(finalizedopos)
+        wins = end
+        print(wins)
+        print('%s\'s values = %s' % (usero.capitalize(), userolist))
